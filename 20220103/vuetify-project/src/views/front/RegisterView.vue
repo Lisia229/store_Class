@@ -51,7 +51,6 @@ const register = async () => {
   if (!valid.value) return
   loading.value = true
   try {
-    // -這行帶入 back 的 users
     await api.post('/users', form)
     await Swal.fire({
       icon: 'success',

@@ -2,11 +2,9 @@ import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import { api, apiAuth } from '@/plugins/axios'
 import Swal from 'sweetalert2'
-import { useRouter } from 'vue-router'
+import router from '@/plugins/router'
 
 export const useUserStore = defineStore('user', () => {
-  const router = useRouter()
-
   const token = ref('')
   const account = ref('')
   const email = ref('')
@@ -19,9 +17,8 @@ export const useUserStore = defineStore('user', () => {
   const isAdmin = computed(() => {
     return role.value === 1
   })
-
   const avatar = computed(() => {
-    return `https://source.boringavatars.com/beam/256/${account.value}?colors=F7F6EC,DEDBDC,e9c46a,CADDDF,806363`
+    return `https://source.boringavatars.com/beam/256/${account.value}?colors=ffabab,ffdaab,ddffab,abe4ff,d9abff`
   })
 
   const login = async (form) => {
@@ -90,9 +87,9 @@ export const useUserStore = defineStore('user', () => {
     role,
     login,
     logout,
+    getUser,
     isLogin,
     isAdmin,
-    getUser,
     avatar
   }
 }, {
